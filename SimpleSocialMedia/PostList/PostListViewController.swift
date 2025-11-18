@@ -7,14 +7,12 @@
 
 import UIKit
 
-class PostListViewController: UIViewController {
+class PostListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
     }
-
-
 }
 
 //MARK: - Private Methods

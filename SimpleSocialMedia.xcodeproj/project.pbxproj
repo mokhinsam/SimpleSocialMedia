@@ -14,6 +14,8 @@
 		12285A562ECB58F000DAA319 /* SimpleSocialMedia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12285A4D2ECB58F000DAA319 /* SimpleSocialMedia.xcdatamodeld */; };
 		12285A572ECB58F000DAA319 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12285A4E2ECB58F000DAA319 /* PostListViewController.swift */; };
 		12285A5C2ECC6E8E00DAA319 /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12285A5B2ECC6E8E00DAA319 /* PostListViewModel.swift */; };
+		12285A5F2ECC76A800DAA319 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12285A5E2ECC76A800DAA319 /* PostCell.swift */; };
+		12285A612ECC76C800DAA319 /* PostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12285A602ECC76C800DAA319 /* PostCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		12285A4E2ECB58F000DAA319 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		12285A502ECB58F000DAA319 /* SimpleSocialMedia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleSocialMedia.xcdatamodel; sourceTree = "<group>"; };
 		12285A5B2ECC6E8E00DAA319 /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
+		12285A5E2ECC76A800DAA319 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		12285A602ECC76C800DAA319 /* PostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +102,18 @@
 			children = (
 				12285A4E2ECB58F000DAA319 /* PostListViewController.swift */,
 				12285A5B2ECC6E8E00DAA319 /* PostListViewModel.swift */,
+				12285A5D2ECC766A00DAA319 /* PostCell */,
 			);
 			path = PostList;
+			sourceTree = "<group>";
+		};
+		12285A5D2ECC766A00DAA319 /* PostCell */ = {
+			isa = PBXGroup;
+			children = (
+				12285A5E2ECC76A800DAA319 /* PostCell.swift */,
+				12285A602ECC76C800DAA319 /* PostCellViewModel.swift */,
+			);
+			path = PostCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +194,8 @@
 				12285A5C2ECC6E8E00DAA319 /* PostListViewModel.swift in Sources */,
 				12285A562ECB58F000DAA319 /* SimpleSocialMedia.xcdatamodeld in Sources */,
 				12285A572ECB58F000DAA319 /* PostListViewController.swift in Sources */,
+				12285A612ECC76C800DAA319 /* PostCellViewModel.swift in Sources */,
+				12285A5F2ECC76A800DAA319 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
