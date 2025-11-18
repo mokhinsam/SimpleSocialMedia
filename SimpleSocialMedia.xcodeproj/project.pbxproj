@@ -12,7 +12,8 @@
 		12285A542ECB58F000DAA319 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12285A462ECB58F000DAA319 /* AppDelegate.swift */; };
 		12285A552ECB58F000DAA319 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12285A482ECB58F000DAA319 /* SceneDelegate.swift */; };
 		12285A562ECB58F000DAA319 /* SimpleSocialMedia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12285A4D2ECB58F000DAA319 /* SimpleSocialMedia.xcdatamodeld */; };
-		12285A572ECB58F000DAA319 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12285A4E2ECB58F000DAA319 /* ViewController.swift */; };
+		12285A572ECB58F000DAA319 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12285A4E2ECB58F000DAA319 /* PostListViewController.swift */; };
+		12285A5C2ECC6E8E00DAA319 /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12285A5B2ECC6E8E00DAA319 /* PostListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +23,9 @@
 		12285A482ECB58F000DAA319 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		12285A4A2ECB58F000DAA319 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12285A4B2ECB58F000DAA319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		12285A4E2ECB58F000DAA319 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		12285A4E2ECB58F000DAA319 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		12285A502ECB58F000DAA319 /* SimpleSocialMedia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleSocialMedia.xcdatamodel; sourceTree = "<group>"; };
+		12285A5B2ECC6E8E00DAA319 /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				12285A492ECB58F000DAA319 /* App */,
-				12285A4E2ECB58F000DAA319 /* ViewController.swift */,
+				12285A5A2ECC6E6200DAA319 /* PostList */,
 				12285A592ECB5C8C00DAA319 /* Storyboard */,
 				12285A582ECB5A5E00DAA319 /* Resources */,
 				12285A4D2ECB58F000DAA319 /* SimpleSocialMedia.xcdatamodeld */,
@@ -89,6 +91,15 @@
 				12285A4C2ECB58F000DAA319 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		12285A5A2ECC6E6200DAA319 /* PostList */ = {
+			isa = PBXGroup;
+			children = (
+				12285A4E2ECB58F000DAA319 /* PostListViewController.swift */,
+				12285A5B2ECC6E8E00DAA319 /* PostListViewModel.swift */,
+			);
+			path = PostList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,8 +177,9 @@
 			files = (
 				12285A542ECB58F000DAA319 /* AppDelegate.swift in Sources */,
 				12285A552ECB58F000DAA319 /* SceneDelegate.swift in Sources */,
+				12285A5C2ECC6E8E00DAA319 /* PostListViewModel.swift in Sources */,
 				12285A562ECB58F000DAA319 /* SimpleSocialMedia.xcdatamodeld in Sources */,
-				12285A572ECB58F000DAA319 /* ViewController.swift in Sources */,
+				12285A572ECB58F000DAA319 /* PostListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
