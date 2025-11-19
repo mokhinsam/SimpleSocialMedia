@@ -8,10 +8,14 @@
 import UIKit
 
 class PostListViewController: UITableViewController {
+    
+    private var viewModel: PostListViewModelProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = PostListViewModel()
         setupNavigationBar()
+        setupTableView()
     }
 }
 
@@ -26,5 +30,24 @@ extension PostListViewController {
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
     }
+    
+    private func setupTableView() {
+        tableView.register(PostCell.self, forCellReuseIdentifier: viewModel.cellReuseIdentifier)
+        tableView.backgroundColor = .black
+        tableView.separatorStyle = .none
+    }
 }
 
+//MARK: - UITableViewDataSource
+extension PostListViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellReuseIdentifier, for: indexPath)
+        guard let cell = cell as? PostCell else { return UITableViewCell() }
+
+        return cell
+    }
+}

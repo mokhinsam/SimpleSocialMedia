@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+protocol PostListViewModelProtocol {
+    var cellReuseIdentifier: String { get }
+}
+
+class PostListViewModel: PostListViewModelProtocol {
+    var cellReuseIdentifier: String {
+        String(describing: PostCell.self)
+    }
+}
