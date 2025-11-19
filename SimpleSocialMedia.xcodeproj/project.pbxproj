@@ -17,6 +17,8 @@
 		12285A5F2ECC76A800DAA319 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12285A5E2ECC76A800DAA319 /* PostCell.swift */; };
 		12285A612ECC76C800DAA319 /* PostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12285A602ECC76C800DAA319 /* PostCellViewModel.swift */; };
 		129BF6342ECDE15500917502 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129BF6332ECDE15500917502 /* Post.swift */; };
+		129BF6372ECDE43D00917502 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 129BF6362ECDE43D00917502 /* Alamofire */; };
+		129BF6392ECDE43D00917502 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 129BF6382ECDE43D00917502 /* AlamofireDynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				129BF6372ECDE43D00917502 /* Alamofire in Frameworks */,
+				129BF6392ECDE43D00917502 /* AlamofireDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +148,8 @@
 			);
 			name = SimpleSocialMedia;
 			packageProductDependencies = (
+				129BF6362ECDE43D00917502 /* Alamofire */,
+				129BF6382ECDE43D00917502 /* AlamofireDynamic */,
 			);
 			productName = SimpleSocialMedia;
 			productReference = 12285A2A2ECB575000DAA319 /* SimpleSocialMedia.app */;
@@ -173,6 +179,9 @@
 			);
 			mainGroup = 12285A212ECB575000DAA319;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				129BF6352ECDE43D00917502 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 12285A2B2ECB575000DAA319 /* Products */;
 			projectDirPath = "";
@@ -440,6 +449,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		129BF6352ECDE43D00917502 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		129BF6362ECDE43D00917502 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 129BF6352ECDE43D00917502 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		129BF6382ECDE43D00917502 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 129BF6352ECDE43D00917502 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		12285A4D2ECB58F000DAA319 /* SimpleSocialMedia.xcdatamodeld */ = {
