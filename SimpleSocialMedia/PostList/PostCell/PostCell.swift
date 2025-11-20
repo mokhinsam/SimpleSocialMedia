@@ -26,9 +26,7 @@ class PostCell: UITableViewCell {
     
     private lazy var userAvatarImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person") //test
-        imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .orange //test
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -62,6 +60,11 @@ class PostCell: UITableViewCell {
         setConstraints()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupUserAvatarImageView()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -72,11 +75,17 @@ extension PostCell {
     private func configure() {
         postTitleLabel.text = viewModel.postTitle
         postBodyLabel.text = viewModel.postBody
+        userAvatarImageView.image = UIImage(named: viewModel.userAvatar)
     }
     
     private func setupCell() {
         backgroundColor = .black
         selectionStyle = .none
+    }
+    
+    private func setupUserAvatarImageView() {
+        userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width / 2
+        userAvatarImageView.layer.masksToBounds = true
     }
     
     private func createLabel(withFontSize fontSize: CGFloat, andWeight weight: UIFont.Weight) -> UILabel {

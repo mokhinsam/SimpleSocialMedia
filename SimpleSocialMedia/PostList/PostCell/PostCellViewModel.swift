@@ -10,6 +10,7 @@ import Foundation
 protocol PostCellViewModelProtocol {
     var postTitle: String { get }
     var postBody: String { get }
+    var userAvatar: String { get }
     init(post: Post)
 }
 
@@ -20,6 +21,10 @@ class PostCellViewModel: PostCellViewModelProtocol {
     
     var postBody: String {
         post.body
+    }
+    
+    var userAvatar: String {
+        return "user\(post.userId)"
     }
     
     private var post: Post

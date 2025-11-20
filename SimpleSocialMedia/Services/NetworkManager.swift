@@ -23,7 +23,6 @@ class NetworkManager {
             .responseDecodable(of: [Post].self) { response in
                 switch response.result {
                 case .success(let posts):
-                    print(posts)
                     completion(.success(posts))
                 case .failure(let error):
                     completion(.failure(error))
