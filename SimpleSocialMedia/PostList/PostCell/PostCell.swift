@@ -9,6 +9,12 @@ import UIKit
 
 class PostCell: UITableViewCell {
     
+    var viewModel: PostCellViewModelProtocol! {
+        didSet {
+            configure()
+        }
+    }
+    
     private lazy var cellView: UIView = {
         let view = UIView()
         view.backgroundColor = .darkGray.withAlphaComponent(0.5)
@@ -31,7 +37,7 @@ class PostCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .left
-        label.text = "Title" //test
+//        label.text = "Title" //test
         label.backgroundColor = .blue //test
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -41,7 +47,7 @@ class PostCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .left
-        label.text = "Title 2 for text" //test
+//        label.text = "Title 2 for text" //test
         label.backgroundColor = .systemMint //test
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -75,6 +81,11 @@ class PostCell: UITableViewCell {
 
 //MARK: - Private Methods
 extension PostCell {
+    private func configure() {
+        postTitleLabel.text = viewModel.postTitle
+        postBodyLabel.text = viewModel.postBody
+    }
+    
     private func setupCell() {
         backgroundColor = .black
         selectionStyle = .none

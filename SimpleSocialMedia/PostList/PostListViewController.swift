@@ -9,7 +9,13 @@ import UIKit
 
 class PostListViewController: UITableViewController {
     
-    private var viewModel: PostListViewModelProtocol!
+    private var viewModel: PostListViewModelProtocol! {
+        didSet {
+            viewModel.fetchCourses { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +48,13 @@ extension PostListViewController {
 //MARK: - UITableViewDataSource
 extension PostListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        viewModel.numberOfRows
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellReuseIdentifier, for: indexPath)
         guard let cell = cell as? PostCell else { return UITableViewCell() }
-
+        cell.viewModel = viewModel.getPostCellViewModel(at: indexPath.row)
         return cell
     }
 }
