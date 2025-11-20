@@ -34,23 +34,11 @@ class PostCell: UITableViewCell {
     }()
     
     private lazy var postTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textAlignment = .left
-//        label.text = "Title" //test
-        label.backgroundColor = .blue //test
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+        createLabel(withFontSize: 18, andWeight: .bold)
     }()
     
     private lazy var postBodyLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textAlignment = .left
-//        label.text = "Title 2 for text" //test
-        label.backgroundColor = .systemMint //test
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+        createLabel(withFontSize: 16, andWeight: .regular)
     }()
     
     private lazy var favoriteButton: UIButton = {
@@ -89,6 +77,16 @@ extension PostCell {
     private func setupCell() {
         backgroundColor = .black
         selectionStyle = .none
+    }
+    
+    private func createLabel(withFontSize fontSize: CGFloat, andWeight weight: UIFont.Weight) -> UILabel {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: fontSize, weight: weight)
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }
     
     private func setupSubviews(_ subviews: UIView...) {
