@@ -11,7 +11,7 @@ class PostListViewController: UITableViewController {
     
     private var viewModel: PostListViewModelProtocol! {
         didSet {
-            viewModel.fetchCourses { [weak self] in
+            viewModel.fetchPosts { [weak self] in
                 self?.tableView.reloadData()
             }
         }
