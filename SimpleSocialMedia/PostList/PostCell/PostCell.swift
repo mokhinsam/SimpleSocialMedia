@@ -15,6 +15,8 @@ class PostCell: UITableViewCell {
         }
     }
     
+    private let avatarSize: (width: CGFloat, height: CGFloat) = (50, 50)
+    
     private lazy var cellView: UIView = {
         let view = UIView()
         view.backgroundColor = .darkGray.withAlphaComponent(0.5)
@@ -27,6 +29,8 @@ class PostCell: UITableViewCell {
     private lazy var userAvatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = avatarSize.width / 2
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -60,11 +64,6 @@ class PostCell: UITableViewCell {
         setConstraints()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupUserAvatarImageView()
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -81,11 +80,6 @@ extension PostCell {
     private func setupCell() {
         backgroundColor = .black
         selectionStyle = .none
-    }
-    
-    private func setupUserAvatarImageView() {
-        userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width / 2
-        userAvatarImageView.layer.masksToBounds = true
     }
     
     private func createLabel(withFontSize fontSize: CGFloat, andWeight weight: UIFont.Weight) -> UILabel {
@@ -113,8 +107,8 @@ extension PostCell {
         ])
         
         NSLayoutConstraint.activate([
-            userAvatarImageView.widthAnchor.constraint(equalToConstant: 50),
-            userAvatarImageView.heightAnchor.constraint(equalToConstant: 50),
+            userAvatarImageView.widthAnchor.constraint(equalToConstant: avatarSize.width),
+            userAvatarImageView.heightAnchor.constraint(equalToConstant: avatarSize.height),
             userAvatarImageView.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 16),
             userAvatarImageView.leadingAnchor.constraint(equalTo: cellView.leadingAnchor, constant: 16),
         ])
