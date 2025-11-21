@@ -9,19 +9,21 @@ import UIKit
 
 class PostListViewController: UITableViewController {
     
-    private var viewModel: PostListViewModelProtocol! {
+    private var viewModel: PostListViewModelProtocol! /*{
         didSet {
             viewModel.fetchPosts { [weak self] in
                 self?.tableView.reloadData()
             }
         }
-    }
+    }*/
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = PostListViewModel()
         setupNavigationBar()
         setupTableView()
+        setupRefreshControl()
+        downloadData()
     }
 }
 
@@ -42,6 +44,22 @@ extension PostListViewController {
         tableView.register(PostCell.self, forCellReuseIdentifier: viewModel.cellReuseIdentifier)
         tableView.backgroundColor = .black
         tableView.separatorStyle = .none
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl?.tintColor = .white
+        refreshControl?.addTarget(self, action: #selector(downloadData), for: .valueChanged)
+    }
+    
+    @objc private func downloadData() {
+        viewModel.fetchPosts { [weak self] in
+            self?.tableView.reloadData()
+            if self?.refreshControl != nil {
+                self?.refreshControl?.endRefreshing()
+            }
+        }
     }
 }
 
