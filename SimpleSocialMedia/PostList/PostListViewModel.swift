@@ -29,8 +29,19 @@ class PostListViewModel: PostListViewModelProtocol {
         NetworkManager.shared.fetchPosts(from: Link.postsURL.rawValue) { [weak self] result in
             switch result {
             case .success(let posts):
-                self?.savePostsToStorage(posts)
-                self?.posts = posts
+                let postsWithFavoriteStatus = posts.map { post -> Post in
+                    let isFavorite = StorageManager.shared.getFavoriteStatus(for: post)
+                    let postWithFavoriteStatus = Post(
+                        userId: post.userId,
+                        id: post.id,
+                        title: post.title,
+                        body: post.body,
+                        isFavorite: isFavorite
+                    )
+                    return postWithFavoriteStatus
+                }
+                self?.savePostsToStorage(postsWithFavoriteStatus)
+                self?.posts = postsWithFavoriteStatus
                 completion()
             case .failure(let error):
                 print("Network error: \(error)")

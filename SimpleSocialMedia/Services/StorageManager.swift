@@ -36,6 +36,7 @@ class StorageManager {
             postEntity.id = Int64(post.id)
             postEntity.title = post.title
             postEntity.body = post.body
+            postEntity.isFavorite = post.isFavorite ?? false 
         }
         saveContext()
     }
@@ -48,20 +49,49 @@ class StorageManager {
         
         do {
             let postEntity = try viewContext.fetch(request)
-            var posts: [Post] = []
-            for post in postEntity {
-                posts.append(
-                    Post(
-                        userId: Int(post.userId),
-                        id: Int(post.id),
-                        title: post.title ?? "",
-                        body: post.body ?? ""
-                    )
+            let posts = postEntity.map { post in
+                Post(
+                    userId: Int(post.userId),
+                    id: Int(post.id),
+                    title: post.title ?? "",
+                    body: post.body ?? "",
+                    isFavorite: post.isFavorite
                 )
+            
             }
             completion(.success(posts))
         } catch let error {
             completion(.failure(error))
+        }
+    }
+    
+    //MARK: - Favorite Button
+    func getFavoriteStatus(for post: Post) -> Bool {
+        let request = PostEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %d", post.id)
+        
+        do {
+            let results = try viewContext.fetch(request)
+            guard let postEntity = results.first else { return false }
+            let favoriteStatus = postEntity.isFavorite
+            return favoriteStatus
+        } catch let error {
+            print("Error fetching like status: \(error)")
+            return false
+        }
+    }
+    
+    func setFavoriteStatus(for post: Post, with status: Bool) {
+        let request = PostEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %d", post.id)
+        
+        do {
+            let results = try viewContext.fetch(request)
+            guard let postEntity = results.first else { return }
+            postEntity.isFavorite = status
+            saveContext()
+        } catch let error {
+            print("Error change like status: \(error)")
         }
     }
     

@@ -11,7 +11,9 @@ protocol PostCellViewModelProtocol {
     var postTitle: String { get }
     var postBody: String { get }
     var userAvatar: String { get }
+    var isFavorite: Box<Bool> { get }
     init(post: Post)
+    func favoriteButtonPressed()
 }
 
 class PostCellViewModel: PostCellViewModelProtocol {
@@ -27,9 +29,16 @@ class PostCellViewModel: PostCellViewModelProtocol {
         return "user\(post.userId)"
     }
     
+    var isFavorite: Box<Bool>
     private var post: Post
     
     required init(post: Post) {
         self.post = post
+        isFavorite = Box(StorageManager.shared.getFavoriteStatus(for: post))
+    }
+    
+    func favoriteButtonPressed() {
+        isFavorite.value.toggle()
+        StorageManager.shared.setFavoriteStatus(for: post, with: isFavorite.value)
     }
 }

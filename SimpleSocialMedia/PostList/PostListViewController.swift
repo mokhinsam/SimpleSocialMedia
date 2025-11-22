@@ -9,14 +9,8 @@ import UIKit
 
 class PostListViewController: UITableViewController {
     
-    private var viewModel: PostListViewModelProtocol! /*{
-        didSet {
-            viewModel.fetchPosts { [weak self] in
-                self?.tableView.reloadData()
-            }
-        }
-    }*/
-
+    private var viewModel: PostListViewModelProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = PostListViewModel()

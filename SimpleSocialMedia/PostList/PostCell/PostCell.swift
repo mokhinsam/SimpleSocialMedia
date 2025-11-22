@@ -46,7 +46,8 @@ class PostCell: UITableViewCell {
     private lazy var favoriteButton: UIButton = {
         var button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        button.tintColor = .systemGray //test
+        button.tintColor = .gray
+        button.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -72,9 +73,23 @@ class PostCell: UITableViewCell {
 //MARK: - Private Methods
 extension PostCell {
     private func configure() {
+        setStatusForFavoriteButton(viewModel.isFavorite.value)
+        
+        viewModel.isFavorite.bind { [weak self] value in
+            self?.setStatusForFavoriteButton(value)
+        }
+    
         postTitleLabel.text = viewModel.postTitle
         postBodyLabel.text = viewModel.postBody
         userAvatarImageView.image = UIImage(named: viewModel.userAvatar)
+    }
+    
+    private func setStatusForFavoriteButton(_ status: Bool) {
+        favoriteButton.tintColor = status ? .red : .gray
+    }
+    
+    @objc private func favoriteButtonPressed() {
+        viewModel.favoriteButtonPressed()
     }
     
     private func setupCell() {
@@ -94,16 +109,16 @@ extension PostCell {
     
     private func setupSubviews(_ subviews: UIView...) {
         subviews.forEach { subview in
-            addSubview(subview)
+            contentView.addSubview(subview)
         }
     }
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            cellView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            cellView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            cellView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            cellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            cellView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            cellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            cellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            cellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
         ])
         
         NSLayoutConstraint.activate([
