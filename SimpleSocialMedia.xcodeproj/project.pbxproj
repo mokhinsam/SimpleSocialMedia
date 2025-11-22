@@ -70,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				12285A4F2ECB58F000DAA319 /* SimpleSocialMedia */,
-				129BF63F2ECDFAFA00917502 /* Frameworks */,
 				12285A2B2ECB575000DAA319 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -158,13 +157,6 @@
 				129BF64D2ED071BF00917502 /* StorageManager.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		129BF63F2ECDFAFA00917502 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		129BF64F2ED1E68A00917502 /* Helpers */ = {
