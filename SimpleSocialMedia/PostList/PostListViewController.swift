@@ -24,9 +24,7 @@ class PostListViewController: UITableViewController {
 //MARK: - Private Methods
 extension PostListViewController {
     private func setupNavigationBar() {
-        title = "Posts"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -50,6 +48,7 @@ extension PostListViewController {
     @objc private func downloadData() {
         viewModel.fetchPosts { [weak self] in
             self?.tableView.reloadData()
+            self?.title = self?.viewModel.navigationTitle
             if self?.refreshControl != nil {
                 self?.refreshControl?.endRefreshing()
             }

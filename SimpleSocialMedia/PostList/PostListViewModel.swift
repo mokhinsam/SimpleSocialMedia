@@ -10,6 +10,7 @@ import Foundation
 protocol PostListViewModelProtocol {
     var cellReuseIdentifier: String { get }
     var numberOfRows: Int { get }
+    var navigationTitle: String { get }
     func fetchPosts(completion: @escaping () -> Void)
     func getPostCellViewModel(at row: Int) -> PostCellViewModelProtocol
 }
@@ -23,7 +24,12 @@ class PostListViewModel: PostListViewModelProtocol {
         posts.count
     }
     
+    var navigationTitle: String {
+        isOnline ? "Posts Online" : "Posts Offline"
+    }
+    
     private var posts: [Post] = []
+    private var isOnline = true
     
     func fetchPosts(completion: @escaping () -> Void) {
         NetworkManager.shared.fetchPosts(from: Link.postsURL.rawValue) { [weak self] result in
@@ -42,8 +48,10 @@ class PostListViewModel: PostListViewModelProtocol {
                 }
                 self?.savePostsToStorage(postsWithFavoriteStatus)
                 self?.posts = postsWithFavoriteStatus
+                self?.isOnline = true
                 completion()
             case .failure(let error):
+                self?.isOnline = false
                 print("Network error: \(error)")
                 self?.loadPostsFromStorage()
                 completion()
